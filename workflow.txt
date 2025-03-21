@@ -1,0 +1,51 @@
+[Start]
+   |
+   v
+[Setup WebDriver]
+   | (Initialize Chrome with options)
+   v
+[Login to Instagram]
+   | (Get credentials from .env)
+   | (Navigate to Instagram)
+   | (Enter username & password)
+   | (Pause 60s for 2FA)
+   v
+[Login Successful?]
+   | No ----> [Print "Login Failed"] ----> [Close Browser] ----> [End]
+   | Yes
+   v
+[Loop through Actors/Actresses List]
+   | (For each profile)
+   |   v
+   | [Visit Profile]
+   |   | (Navigate to profile URL)
+   |   v
+   | [Find First Post]
+   |   | (Click first post)
+   |   v
+   | [Comment Loop]
+   |   | (For num_posts_per_profile)
+   |   |   v
+   |   | [Select Random Comment]
+   |   |   v
+   |   | [Enter Comment]
+   |   |   | (Click comment box, type, submit)
+   |   |   v
+   |   | [Wait Random Delay]
+   |   |   | (5-12 seconds)
+   |   |   v
+   |   | [Next Post Exists?]
+   |   |   | Yes ----> [Click Next Post] ----> [Repeat Comment Loop]
+   |   |   | No
+   |   |   v
+   |   | [End Comment Loop]
+   |   v
+   | [End Profile Loop]
+   v
+[Print "Task Completed"]
+   |
+   v
+[Close Browser]
+   |
+   v
+[End]
